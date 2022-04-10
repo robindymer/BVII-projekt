@@ -8,7 +8,11 @@ y = zeros(2, length(t));
 y(1,1) = 0;
 y(2,1) = f;
 
+% Convergence rate
+q = zeros(length(t), 1);
+
 for i=1:(length(t)-1)
+    % RK4 algorithm
     t_n = t(i);
     u_n = y(:,i);
     w1 = F(t_n, u_n);
@@ -19,4 +23,19 @@ for i=1:(length(t)-1)
     y(:,i+1) = u_next;
 end
 
+hold on
 plot(t, y(2,:))
+anals = zeros(length(t), 1);
+for i=1:length(anals)
+    anals(i) = anal(t(i));
+end
+plot(t, anals)
+hold off
+
+% Anal the error
+e = norm(anals(length(anals))-y(2,length(t)));
+disp(e)
+
+% Convergence calculations
+% Compare timestep k and 2k
+q = log10(norm())
