@@ -1,0 +1,46 @@
+a = 0;
+g = 0;
+f = 1;
+% INPUT TO THE PROGRAM
+k = 0.1;
+b = -1;
+T = 10;
+
+t = 0:k:T;
+y = zeros(1, length(t)); % Column vector
+y(1) = f; % Initial value
+y(2) = (1 + k^2/2*b) * f;
+
+for i=2:(length(t)-1)
+    y(i+1) = -y(i-1) + 2*(1+b*k^2/2)*y(i);
+end
+
+% With time step 2k
+kk = 2*k;
+tt = 0:kk:T;
+yy = zeros(1, length(tt));
+yy(1) = f; % Initial value
+yy(2) = (1 + kk^2/2*b) * f;
+
+for i=2:(length(tt)-1)
+    yy(i+1) = -yy(i-1) + 2*(1+b*kk^2/2)*yy(i);
+end
+
+q = log10(norm(anals(length(anals))-y(2,length(t)))/norm(anals(length(anals))-y2(2,length(t))))/log10(0.04/0.08);
+q = zeros(1, length(tt));
+analytical = @(t) cos(sqrt(abs(b))*t); % Trivial to solve analytically, with pen and paper
+
+for i=1:length(tt)
+    yA = analytical(tt(i));
+    yN = y(tt(i));
+    yN2 = yy(tt(i));
+    t = log10(norm(yA-yN)/norm(yA-yN2);
+    
+    q(i) = log10
+end
+
+hold on
+plot(t, y, 'bo');
+t2 = linspace(0, T, 100);
+plot(t2, analytical(t2));
+hold off
