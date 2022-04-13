@@ -2,9 +2,9 @@ a = 0;
 g = 0;
 f = 1;
 % INPUT TO THE PROGRAM
-k = 0.04;
-b = -1;
-T = 1;
+k = 0.3;
+b = -100;
+T = 100;
 
 t = 0:k:T;
 y = zeros(1, length(t)); % Column vector
@@ -18,6 +18,6 @@ end
 hold on
 plot(t, y, 'bo');
 t2 = linspace(0, T, 100);
-analytical = @(t) cos(t); % Trivial to solve analytically, with pen and paper
+analytical = @(t) cos(sqrt(abs(b))*t); % Trivial to solve analytically, with pen and paper
 plot(t2, analytical(t2));
 hold off
