@@ -2,7 +2,7 @@ a = 0;
 g = 0;
 f = 1;
 % INPUT TO THE PROGRAM
-k = 0.04;
+k = 0.01;
 b = -1;
 T = 10;
 
@@ -12,7 +12,7 @@ y(1) = f; % Initial value
 y(2) = (1 + k^2/2*b) * f;
 
 for i=2:(length(t)-1)
-    y(i+1) = -y(i-1) + 2*(1+b*k^2/2)*y(i);
+    y(i+1) = -y(i-1) + 2*y(i) + k^2*(b+b^2*k^2/12)*y(i);
 end
 
 % With time step 2k
@@ -23,7 +23,7 @@ yy(1) = f; % Initial value
 yy(2) = (1 + kk^2/2*b) * f;
 
 for i=2:(length(tt)-1)
-    yy(i+1) = -yy(i-1) + 2*(1+b*kk^2/2)*yy(i);
+    yy(i+1) = -yy(i-1) + 2*yy(i) + k^2*(b+b^2*k^2/12)*yy(i);
 end
 
 analytical = @(x) cos(sqrt(abs(b))*x); % Trivial to solve analytically, with pen and paper

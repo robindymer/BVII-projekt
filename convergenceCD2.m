@@ -4,7 +4,7 @@ f = 1;
 % INPUT TO THE PROGRAM
 k = 0.04;
 b = -1;
-T = 10;
+T = 100;
 
 t = 0:k:T;
 y = zeros(1, length(t)); % Column vector
