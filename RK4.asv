@@ -58,10 +58,8 @@ err1 = zeros(1, length(t));
 err2 = zeros(1, length(t2));
 
 for i=1:length(t)
-    % Since we need to compare the same number of data points
-    if (rem(i+1,2) == 0)
-        err1(i) = anal(t(i)) - y(2,i);
-    end
+    if (rem(i,2) )
+    err1(i) = anal(t(i)) - y(2,i);
 end
 for i=1:length(t2)
     err2(i) = anal(t2(i)) - y2(2,i);

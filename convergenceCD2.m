@@ -32,7 +32,10 @@ err1 = zeros(1, length(t));
 err2 = zeros(1, length(tt));
 
 for i=1:length(t)
-    err1(i) = analytical(t(i)) - y(i);
+    % Compare the same number of data points
+    if (rem(i+1,2) == 0)
+        err1(i) = analytical(t(i)) - y(i);
+    end
 end
 for i=1:length(tt)
     err2(i) = analytical(tt(i)) - yy(i);
