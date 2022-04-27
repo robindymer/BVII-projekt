@@ -2,9 +2,9 @@ a = 0;
 g = 0;
 f = 1;
 % INPUT TO THE PROGRAM
-k = 0.1;
+k = 0.5;
 b = -1;
-T = 10;
+T = 1000;
 t0 = 0;
 t = t0:k:T;
 

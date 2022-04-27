@@ -1,6 +1,6 @@
 function uOut = F(t, ySys)
-%F Summary of this function goes here
-%   Detailed explanation goes here
+%F Defines a linear ODE of two variables
+% Given a time t and a values for y and w, return the defined ODE
 
 a = -2;
 b = -101;
