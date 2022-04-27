@@ -2,9 +2,9 @@ a = 0;
 g = 0;
 f = 1;
 % INPUT TO THE PROGRAM
-k = 0.1;
+k = 0.05;
 b = -1;
-T = 10;
+T = 100000;
 
 t = 0:k:T;
 y = zeros(1, length(t)); % Column vector
@@ -18,9 +18,9 @@ for i=2:(length(t)-1)
 end
 
 % Plotta numeriska energi som funktion av tiden
-
+disp(E(end))
 figure(2)
 plot(t,E)
 xlabel('t')
-ylabel('-----');
-title('Mitt första ODE program');
+ylabel('E = y(n+1)-y(n-1)/(2k)^2-by(n)^2');
+title('E(t) for CD4');

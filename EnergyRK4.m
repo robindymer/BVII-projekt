@@ -2,9 +2,15 @@ a = 0;
 g = 0;
 f = 1;
 % INPUT TO THE PROGRAM
+<<<<<<< HEAD
 k = 0.5;
 b = -1;
 T = 1000;
+=======
+k = 1;
+b = -1;
+T = 100000;
+>>>>>>> ac3c7bdb909269933bb2f574011b3cdfa44ab7aa
 t0 = 0;
 t = t0:k:T;
 
@@ -23,10 +29,11 @@ for i=1:(length(t)-1)
     u_next = u_n + k*(w1 + 2*w2 + 2*w3 + w4)/6;
     y(:,i+1) = u_next;
 end
-
 % Plotta numeriska energi som funktion av tiden
 E=y(1,:).^2-b*y(2,:).^2;
+disp(E(end))
 figure(2)
 plot(t,E)
 xlabel('t')
 ylabel('E=y_t^2+\b y^2');
+title('E(t) for RK4');
