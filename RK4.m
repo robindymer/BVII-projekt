@@ -1,3 +1,4 @@
+% Define necessary parameters for the computation
 t0 = 0;
 k = 0.02;
 T = 1;
@@ -5,6 +6,7 @@ t = t0:k:T;
 f = 1;
 
 y = zeros(2, length(t));
+% Initial values
 y(1,1) = 0;
 y(2,1) = f;
 
@@ -20,6 +22,7 @@ for i=1:(length(t)-1)
     y(:,i+1) = u_next;
 end
 
+% Graph the numerical and analytical solution
 hold on
 plot(t, y(2,:), 'bo')
 anals = zeros(length(t), 1);

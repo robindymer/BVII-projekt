@@ -1,7 +1,10 @@
+% Parameters for the ODE
 a = 0;
 g = 0;
+% Initial value
 f = 1;
-% Key parameters for the computation
+
+% Parameters for the computation
 k = 0.025;
 b = -1;
 T = 10;
@@ -22,11 +25,12 @@ yy = zeros(1, length(tt));
 yy(1) = f; % Initial value
 yy(2) = (1 + kk^2/2*b + kk^4/24*b^2) * f;
 
+% CD4 algorithm
 for i=2:(length(tt)-1)
     yy(i+1) = -yy(i-1) + 2*yy(i) + kk^2*(b+b^2*kk^2/12)*yy(i);
 end
 
-analytical = @(x) cos(sqrt(abs(b))*x); % Trivial to solve analytically, with pen and paper
+analytical = @(x) cos(sqrt(abs(b))*x); % The analytical solution
 
 % Calculate the error and the convergence rate
 error = abs(analytical(t(end))-y(end));
