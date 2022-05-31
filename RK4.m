@@ -57,17 +57,26 @@ for i=1:(length(t2)-1)
     y2(:,i+1) = u_next;
 end
 
-err1 = zeros(1, length(t));
-err2 = zeros(1, length(t2));
+% -- If we want to take into account each error --
+% err1 = zeros(1, length(t));
+% err2 = zeros(1, length(t2));
+% 
+% for i=1:length(t)
+% %     Since we need to compare the same number of data points
+%     if (rem(i+1,2) == 0)
+%         err1(i) = anal(t(i)) - y(2,i);
+%     end
+% end
+% for i=1:length(t2)
+%     err2(i) = anal(t2(i)) - y2(2,i);
+% end
+% q = log10(norm(err1)/norm(err2))/log10(k/k2);
+% disp(q);
+% error = abs(norm(err1)-anals(end));
+% disp(error)
 
-for i=1:length(t)
-    % Since we need to compare the same number of data points
-    if (rem(i+1,2) == 0)
-        err1(i) = anal(t(i)) - y(2,i);
-    end
-end
-for i=1:length(t2)
-    err2(i) = anal(t2(i)) - y2(2,i);
-end
-q = log10(norm(err1)/norm(err2))/log10(k/k2);
-disp(q);
+% Calculate the error and the convergence rate
+error = abs(anals(end)-y(2, end));
+disp(error)
+q2 = log(abs(anals(end)-y(2, end))/abs(anals(end)-y2(2, end)))/log(k/k2);
+disp(q2)
